@@ -1,4 +1,4 @@
-"""Herramienta de administración de accesos (se ejecuta en TU computadora, no en Render).
+"""Herramienta de administración de accesos (se ejecuta en TU computadora, no en Azure).
 
 Necesita la misma variable SCHEDORA_SECRET que configuraste en Render.
 
@@ -75,10 +75,10 @@ def cmd_verificar(args) -> None:
 def cmd_revocar_ayuda(_args) -> None:
     print(
         "Para desactivar un acceso antes de que venza:\n"
-        "  1. En Render, abre tu servicio > Environment.\n"
+        "  1. En Azure Portal, abre tu App Service > Configuración > Variables de entorno.\n"
         "  2. Edita SCHEDORA_REVOCADOS y agrega el ID del acceso (8 caracteres),\n"
         "     separado por comas de los demás:  a1b2c3d4,e5f6a7b8\n"
-        "  3. Guarda. Render reinicia el servicio y el acceso deja de funcionar.\n"
+        "  3. Aplica y guarda. Azure reinicia la app y el acceso deja de funcionar.\n"
         "Los IDs emitidos están en accesos.csv.\n"
         "Cuando un acceso ya venció, puedes quitar su ID de la lista."
     )

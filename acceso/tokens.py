@@ -18,12 +18,15 @@ import base64
 import binascii
 import hashlib
 import hmac
+import logging
 import os
 import struct
 import time
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+
+from entorno import en_azure
 
 PREFIJO = "SCH"
 LARGO_ID = 4
@@ -39,7 +42,13 @@ def zona_horaria() -> ZoneInfo:
 
 
 def acceso_abierto() -> bool:
-    return os.environ.get("SCHEDORA_ACCESO_ABIERTO", "").strip() == "1"
+    """Modo sin código, SOLO para desarrollo local. En Azure se ignora siempre."""
+    if os.environ.get("SCHEDORA_ACCESO_ABIERTO", "").strip() != "1":
+        return False
+    if en_azure():
+        logging.getLogger(__name__).warning("SCHEDORA_ACCESO_ABIERTO se ignora en Azure; quítalo de la configuración.")
+        return False
+    return True
 
 
 def obtener_secreto() -> bytes | None:

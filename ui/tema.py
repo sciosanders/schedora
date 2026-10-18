@@ -91,11 +91,30 @@ button[disabled] { opacity: .55 !important; }
 """
 
 
+_MIME = {".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}
+_RAIZ = os.path.dirname(ASSETS)
+
+
+def _buscar_imagen(base: str, alias: tuple[str, ...]) -> str | None:
+    """Busca el logo: primero en la carpeta principal del proyecto (si lo agregaste ahí), luego en assets/."""
+    for carpeta in (_RAIZ, ASSETS):
+        for nombre in (base, *alias):
+            for ext in (".svg", ".png", ".webp", ".jpg", ".jpeg"):
+                ruta = os.path.join(carpeta, nombre + ext)
+                if os.path.isfile(ruta):
+                    return ruta
+    return None
+
+
 def _data_uri(nombre_svg: str) -> str:
-    ruta = os.path.join(ASSETS, nombre_svg)
+    base = os.path.splitext(nombre_svg)[0]
+    alias = ("logo",) if base.endswith("logo") else ("icono", "icon", "favicon")
+    ruta = _buscar_imagen(base, alias)
+    if not ruta:
+        return ""
     try:
         with open(ruta, "rb") as f:
-            return "data:image/svg+xml;base64," + base64.b64encode(f.read()).decode("ascii")
+            return f"data:{_MIME[os.path.splitext(ruta)[1]]};base64," + base64.b64encode(f.read()).decode("ascii")
     except OSError:
         return ""
 

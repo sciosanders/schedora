@@ -81,3 +81,18 @@ def test_revision_con_errores_deja_el_boton_generar_apagado_y_ofrece_reporte(tmp
     shutil.copy(ejemplo("datos_infactibles.xlsx"), copia)
     rev, html, boton, diag, _ = cb.revisar_archivo(str(copia), "abierto")
     assert not rev.ok and boton["interactive"] is False and diag["visible"] is True and os.path.exists(diag["value"])
+
+
+def test_logo_de_la_carpeta_principal_tiene_prioridad(tmp_path, monkeypatch):
+    from ui import tema
+
+    raiz, assets = tmp_path, tmp_path / "assets"
+    assets.mkdir()
+    (assets / "schedora-logo.svg").write_text("<svg/>")
+    (raiz / "logo.png").write_bytes(b"\x89PNG")
+    monkeypatch.setattr(tema, "_RAIZ", str(raiz))
+    monkeypatch.setattr(tema, "ASSETS", str(assets))
+    assert tema._data_uri("schedora-logo.svg").startswith("data:image/png;base64,")
+    (raiz / "logo.png").unlink()
+    assert tema._data_uri("schedora-logo.svg").startswith("data:image/svg+xml;base64,")
+    assert tema._data_uri("no-existe-logo.svg") == ""
