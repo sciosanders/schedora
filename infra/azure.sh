@@ -12,7 +12,7 @@ SECRETO="${SCHEDORA_SECRET:?Define SCHEDORA_SECRET (≥16 caracteres, aleatorio)
 
 az group create -n "$GRUPO" -l "$UBICACION"
 az appservice plan create -g "$GRUPO" -n "$PLAN" --is-linux --sku "$SKU"
-az webapp create -g "$GRUPO" -p "$PLAN" -n "$APP" --runtime "PYTHON:3.11"
+az webapp create -g "$GRUPO" -p "$PLAN" -n "$APP" --runtime "PYTHON:3.12"
 
 # Configuración general
 az webapp config set -g "$GRUPO" -n "$APP" \

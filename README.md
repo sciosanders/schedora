@@ -29,8 +29,8 @@ Sin `SCHEDORA_SECRET` la app **no deja entrar a nadie** (solo `SCHEDORA_ACCESO_A
 
 ## Despliegue en Azure App Service (Linux)
 Guía completa en `docs/despliegue.md`. Resumen:
-1. `APP=mi-app-unica SCHEDORA_SECRET="..." bash infra/azure.sh` crea grupo, plan B1, web app (Python 3.11) y variables.
-2. En GitHub: secreto `AZURE_WEBAPP_PUBLISH_PROFILE` y variable `AZURE_WEBAPP_NAME`; cada push a `main` corre las pruebas y despliega.
+1. `APP=mi-app-unica SCHEDORA_SECRET="..." bash infra/azure.sh` crea grupo, plan B1, web app (Python 3.12) y variables.
+2. En GitHub: secreto `AZURE_WEBAPP_PUBLISH_PROFILE`; edita `app-name` en `.github/workflows/deploy.yml`. Cada push a `main` despliega (las pruebas corren aparte en `ci.yml`).
 3. Revocar un acceso: agrega su ID a `SCHEDORA_REVOCADOS` en *Configuración → Variables de entorno* (la app se reinicia).
 
 ## Variables de entorno

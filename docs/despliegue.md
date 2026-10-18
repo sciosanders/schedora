@@ -12,10 +12,10 @@
 3. Secretos: lo ideal es guardar `SCHEDORA_SECRET` en Key Vault y referenciarlo en la variable
    como `@Microsoft.KeyVault(SecretUri=https://<vault>.vault.azure.net/secrets/schedora-secret/)`
    (requiere identidad administrada con permiso de lectura). El código no cambia.
-4. GitHub → Settings → Secrets: `AZURE_WEBAPP_PUBLISH_PROFILE` (Descargar perfil de publicación en el portal;
-   requiere "Basic authentication" habilitada para SCM) y Variables: `AZURE_WEBAPP_NAME`.
+4. GitHub → Settings → Secrets: `AZURE_WEBAPP_PUBLISH_PROFILE` (descargar perfil de publicación en el portal;
+   requiere "Basic authentication" habilitada para SCM). Escribe el nombre de tu app en `app-name` de `.github/workflows/deploy.yml`.
    Alternativa más segura: OIDC con `azure/login`.
-5. Push a `main`: pruebas → despliegue (Azure compila dependencias por `SCM_DO_BUILD_DURING_DEPLOYMENT`).
+5. Push a `main`: despliegue (las pruebas corren en `ci.yml`; Azure compila dependencias por `SCM_DO_BUILD_DURING_DEPLOYMENT`).
 6. Ver errores: *Monitoreo → Log stream*.
 
 ## Operación de accesos
