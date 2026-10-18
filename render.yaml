@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: schedora
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: SCHEDORA_SECRET
+        sync: false
+      - key: SCHEDORA_REVOCADOS
+        sync: false
+      - key: SCHEDORA_TZ
+        value: America/Hermosillo

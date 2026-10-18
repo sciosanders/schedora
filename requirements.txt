@@ -1,0 +1,7 @@
+# Rangos amplios: este proyecto se escribió sin poder instalar paquetes.
+# Tras la primera corrida exitosa ejecuta `pip freeze` y fija las versiones.
+gradio>=4.44
+ortools>=9.9
+openpyxl>=3.1
+pandas>=2.0
+tzdata

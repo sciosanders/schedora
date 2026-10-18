@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 416 416" role="img" aria-label="Schedora"><title>Schedora</title>
+  <g transform="translate(7 7)">
+  <rect x="30" y="70" width="290" height="260" rx="48" fill="#0D7377"/>
+  <rect x="58" y="132" width="234" height="170" rx="22" fill="#FFFDF8"/>
+  <rect x="94" y="40" width="28" height="72" rx="14" fill="#264653" stroke="#F7F3E9" stroke-width="9" paint-order="stroke"/>
+  <rect x="228" y="40" width="28" height="72" rx="14" fill="#264653" stroke="#F7F3E9" stroke-width="9" paint-order="stroke"/>
+  <g>
+    <rect x="82"  y="160" width="54" height="42" rx="11" fill="#14919B"/>
+    <rect x="152" y="160" width="54" height="42" rx="11" fill="#A8D5BA"/>
+    <rect x="222" y="160" width="54" height="42" rx="11" fill="#E9C46A"/>
+    <rect x="82"  y="224" width="54" height="42" rx="11" fill="#A8D5BA"/>
+    <rect x="152" y="224" width="54" height="42" rx="11" fill="#14919B"/>
+  </g>
+  <circle cx="300" cy="290" r="86" fill="#F7F3E9"/>
+  <circle cx="300" cy="290" r="72" fill="#264653"/>
+  <circle cx="300" cy="290" r="48" fill="#FFFDF8"/>
+  <path d="M300 262V290L320 304" fill="none" stroke="#264653" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="300" cy="290" r="7" fill="#E9C46A"/>
+</g>
+</svg>
